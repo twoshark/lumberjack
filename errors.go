@@ -15,8 +15,8 @@ type BadThing struct {
 	Log      `yaml:"inline"`
 }
 
-//NewError - make a new Error
-func NewError(code int, msgs ...string) BadThing {
+//NewBadThing - make a new Error
+func NewBadThing(code int, msgs ...string) BadThing {
 	notGoodThing := BadThing{
 		Code: code,
 	}
@@ -70,7 +70,7 @@ func (e *ErrorHandler) insert(notGoodThing interface{}) {
 		e = &target
 		return
 	}
-	warning := NewError(-1, "Failed to Insert Error")
+	warning := NewBadThing(-1, "Failed to Insert Error")
 	warning.ErrorObj = notGoodThing
 	Geoffrey.Trap.UhOh(warning)
 }
